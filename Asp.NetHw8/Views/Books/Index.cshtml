@@ -1,0 +1,28 @@
+﻿@model IEnumerable<BookViewModel>
+@{
+    ViewData["Title"] = "Library";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Genre</th>
+            <th>Year</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+        {
+            <tr>
+                <td>@book.Title</td>
+                <td>@book.Author</td>
+                <td>@book.Genre</td>
+                <td>@book.Year</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-controller="Books" asp-action="Create">Добавить книгу</a>
