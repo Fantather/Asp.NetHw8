@@ -14,6 +14,13 @@ namespace Asp.NetHw8.Repositories
             _books.Add(new Book("Design Patterns", "Erich Gamma", "Software Engineering", 1994));
             _books.Add(new Book("C# 12 in a Nutshell", "Joseph Albahari", "Programming", 2023));
             _books.Add(new Book("Domain-Driven Design", "Eric Evans", "Architecture", 2003));
+            _books.Add(new Book("Pro ASP.NET Core 7", "Adam Freeman", "Programming", 2022));
+            _books.Add(new Book("Refactoring", "Martin Fowler", "Software Engineering", 1999));
+            _books.Add(new Book("The Pragmatic Programmer", "Andrew Hunt", "Software Engineering", 1999));
+            _books.Add(new Book("Concurrency in C# Cookbook", "Stephen Cleary", "Programming", 2019));
+            _books.Add(new Book("Code Complete", "Steve McConnell", "Software Engineering", 2004));
+            _books.Add(new Book("Patterns of Enterprise Application Architecture", "Martin Fowler", "Architecture", 2002));
+            _books.Add(new Book("Head First Design Patterns", "Eric Freeman", "Software Engineering", 2004));
         }
 
         public IEnumerable<Book> GetAll() => _books;

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BookViewModel>
+﻿@model PaginatedList<BookViewModel>
 @{
     ViewData["Title"] = "Library";
 }
@@ -26,3 +26,9 @@
 </table>
 
 <a asp-controller="Books" asp-action="Create">Добавить книгу</a>
+
+@Html.RenderPagination(
+    Model.PageIndex,
+    Model.TotalPages,
+    Url.Action("Index", "Books", new { page = "{page}" })
+)
