@@ -30,5 +30,5 @@
 @Html.RenderPagination(
     Model.PageIndex,
     Model.TotalPages,
-    Url.Action("Index", "Books", new { page = "{page}" })
+    Url.Action("Index", "Books") + "?page={page}"
 )
