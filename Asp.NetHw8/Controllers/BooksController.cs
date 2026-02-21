@@ -15,7 +15,7 @@ namespace Asp.NetHw8.Controllers
 
             PaginatedList<Book> pagedBooks = PaginatedList<Book>.Create(service.GetAll(), pageNumber, pageSize);
             PaginatedList<BookViewModel> viewModels = pagedBooks
-                .Select(book => new BookViewModel(book.Title, book.Author, book.Genre, book.Year));
+                .Select(book => new BookViewModel(book.Title, book.Author, book.Genre, book.Year, book.ImagePaths[0]));
 
             return View(viewModels);
         }
