@@ -1,4 +1,5 @@
 ﻿using Asp.NetHw8.Helpers;
+using Asp.NetHw8.InputModels;
 using Asp.NetHw8.Interfaces;
 using Asp.NetHw8.Models;
 using Asp.NetHw8.ViewModels;
@@ -15,7 +16,7 @@ namespace Asp.NetHw8.Controllers
 
             PaginatedList<Book> pagedBooks = PaginatedList<Book>.Create(service.GetAll(), pageNumber, pageSize);
             PaginatedList<BookViewModel> viewModels = pagedBooks
-                .Select(book => new BookViewModel(book.Title, book.Author, book.Genre, book.Year, book.ImagePaths[0]));
+                .Select(book => new BookViewModel(book.Title, book.Author, book.Genre, book.Year, book.ImagePaths));
 
             return View(viewModels);
         }
@@ -27,7 +28,7 @@ namespace Asp.NetHw8.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(BookViewModel book)
+        public async Task<IActionResult> Create(BookInputModel book)
         {
             service.Add(book.ToBook());
             return RedirectToAction(nameof(Index));
