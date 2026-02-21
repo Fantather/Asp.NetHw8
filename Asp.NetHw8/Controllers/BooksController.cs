@@ -7,14 +7,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Asp.NetHw8.Controllers
 {
-    public class BooksController(IBookService service) : Controller
+    public class BooksController(IBookService bookService) : Controller
     {
         public IActionResult Index(int? page)
         {
             int pageNumber = page ?? 1;
             int pageSize = 5;
 
-            PaginatedList<Book> pagedBooks = PaginatedList<Book>.Create(service.GetAll(), pageNumber, pageSize);
+            PaginatedList<Book> pagedBooks = PaginatedList<Book>.Create(bookService.GetAll(), pageNumber, pageSize);
             PaginatedList<BookViewModel> viewModels = pagedBooks
                 .Select(book => new BookViewModel(book.Title, book.Author, book.Genre, book.Year, book.ImagePaths));
 
@@ -28,9 +28,9 @@ namespace Asp.NetHw8.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(BookInputModel book)
+        public async Task<IActionResult> Create(BookInputModel inputModel)
         {
-            service.Add(book.ToBook());
+            bookService.Add(await BookConverter.ToBook(inputModel));
             return RedirectToAction(nameof(Index));
         }
     }
