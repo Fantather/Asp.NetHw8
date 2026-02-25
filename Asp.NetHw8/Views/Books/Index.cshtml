@@ -15,8 +15,18 @@
     <tbody>
         @foreach (var book in Model)
         {
+            string detailsUrl = Url.Action("Details", "Books", new { Id = book.Id });
             <tr>
-                <td>@book.Title</td>
+                <td>
+                    <a href="@detailsUrl" class="text-decoration-none text-dark">
+                        <img src="@book.ImagePaths[0]" alt="Cover" style="max-height: 100px" />
+                    </a>
+                </td>
+                <td>
+                    <a href="@detailsUrl" class="text-decoration-none text-dark">
+                        @book.Title
+                    </a>
+                </td>
                 <td>@book.Author</td>
                 <td>@book.Genre</td>
                 <td>@book.Year</td>
@@ -25,7 +35,7 @@
     </tbody>
 </table>
 
-<a asp-controller="Books" asp-action="Create">Добавить книгу</a>
+<a asp-controller="Books" asp-action="Create" class="mt-1">Добавить книгу</a>
 
 @Html.RenderPagination(
     Model.PageIndex,

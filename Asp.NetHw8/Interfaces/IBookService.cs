@@ -6,5 +6,6 @@ namespace Asp.NetHw8.Interfaces
     {
         IEnumerable<Book> GetAll();
         void Add(Book book);
+        Book? GetById(Guid targetId);
     }
 }
